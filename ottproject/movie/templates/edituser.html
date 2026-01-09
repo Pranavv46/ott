@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Users</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    >
+
+    <style>
+        body {
+            background-color: #0f0f0f;
+            color: white;
+        }
+
+        .navbar {
+            background-color: #000;
+        }
+
+        .table-container {
+            margin: 50px auto;
+            max-width: 1200px;
+        }
+
+        .table th, .table td {
+            vertical-align: middle;
+        }
+
+        .btn-add {
+            margin-bottom: 20px;
+        }
+
+        .blocked {
+            color: #ff4d4d;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark px-4">
+    <a class="navbar-brand fw-bold" href="#">MyOTT</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Trending Movies</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">TV Shows</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                    Manage
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item active" href="#">Manage Users</a></li>
+                    <li><a class="dropdown-item" href="#">Manage Movies</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Settings</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Admin</a>
+            </li>
+        </ul>
+
+        <a href="#" class="btn btn-outline-light btn-sm">Logout</a>
+    </div>
+</nav>
+
+<!-- MANAGE USERS TABLE -->
+<div class="container table-container">
+
+    <h2 class="mb-4">Manage Users</h2>
+
+    <!-- Add User Button -->
+    <button class="btn btn-success btn-add">+ Add New User</button>
+
+    <table class="table table-dark table-striped table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>JohnDoe</td>
+                <td>john@example.com</td>
+                <td class="text-success">Active</td>
+                <td>
+                    <button class="btn btn-primary btn-sm">Edit</button>
+                    <button class="btn btn-warning btn-sm">Block</button>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>JaneSmith</td>
+                <td>jane@example.com</td>
+                <td class="blocked">Blocked</td>
+                <td>
+                    <button class="btn btn-primary btn-sm">Edit</button>
+                    <button class="btn btn-success btn-sm">Unblock</button>
+                </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>MikeBrown</td>
+                <td>mike@example.com</td>
+                <td class="text-success">Active</td>
+                <td>
+                    <button class="btn btn-primary btn-sm">Edit</button>
+                    <button class="btn btn-warning btn-sm">Block</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
