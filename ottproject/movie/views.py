@@ -12,3 +12,7 @@ def editmovie(request):
     return render(request,"editmovie.html")
 def edituser(request):
     return render(request,"edituser.html")
+def addmovie(request):
+    return render(request,"addmovie.html")
+def userhistory(request):
+    return render(request,"userhistory.html")

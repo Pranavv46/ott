@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Watch History</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    >
+
+    <style>
+        body {
+            background-color: #0f0f0f;
+            color: white;
+        }
+
+        .navbar {
+            background-color: #000;
+        }
+
+        .card {
+            background-color: #141414;
+            border: none;
+            color: white;
+        }
+
+        .table {
+            color: white;
+        }
+
+        .table thead {
+            background-color: #1f1f1f;
+        }
+
+        .table tbody tr:hover {
+            background-color: #1c1c1c;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark px-4">
+    <a class="navbar-brand fw-bold" href="#">MyOTT Admin</a>
+
+    <div class="ms-auto">
+        <a href="#" class="btn btn-outline-light btn-sm">Logout</a>
+    </div>
+</nav>
+
+<!-- SUMMARY CARDS -->
+<div class="container mt-5">
+    <h3 class="mb-4">User Watch History</h3>
+
+    <div class="row g-4 mb-4">
+        <div class="col-md-3">
+            <div class="card p-3 text-center">
+                <h6>Total Movies Watched</h6>
+                <h2 class="text-danger">124</h2>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card p-3 text-center">
+                <h6>Total Watch Hours</h6>
+                <h2 class="text-danger">312 hrs</h2>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card p-3 text-center">
+                <h6>Most Watched Genre</h6>
+                <h2 class="text-danger">Action</h2>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card p-3 text-center">
+                <h6>Active Days</h6>
+                <h2 class="text-danger">48</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- WATCH HISTORY TABLE -->
+    <!-- SEARCH USER -->
+<div class="card p-3 mb-4">
+    <div class="row g-2 align-items-center">
+        <div class="col-md-8">
+            <input
+                type="text"
+                class="form-control"
+                placeholder="Search user by username..."
+            >
+        </div>
+        <div class="col-md-4 d-grid">
+            <button class="btn btn-danger">Search</button>
+        </div>
+    </div>
+</div>
+
+<!-- WATCH HISTORY TABLE -->
+<div class="card p-4">
+
+        <h5 class="mb-3">Watch History</h5>
+
+        <table class="table table-dark table-hover align-middle">
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Movie / Show</th>
+                    <th>Genre</th>
+                    <th>Watch Time</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>pranav_01</td>
+                    <td>Avengers: Endgame</td>
+                    <td>Action</td>
+                    <td>2h 30m</td>
+                    <td>2025-01-12</td>
+                </tr>
+                <tr>
+                    <td>madison_g</td>
+                    <td>Breaking Bad</td>
+                    <td>Drama</td>
+                    <td>1h 10m</td>
+                    <td>2025-01-11</td>
+                </tr>
+                <tr>
+                    <td>user_123</td>
+                    <td>John Wick</td>
+                    <td>Action</td>
+                    <td>1h 55m</td>
+                    <td>2025-01-10</td>
+                </tr>
+                <tr>
+                    <td>user_456</td>
+                    <td>Friends</td>
+                    <td>Comedy</td>
+                    <td>25m</td>
+                    <td>2025-01-09</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
