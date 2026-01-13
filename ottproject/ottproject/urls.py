@@ -27,4 +27,5 @@ urlpatterns = [
     path('edituser/', views.edituser ),
     path('addmovie/', views.addmovie ),
     path('userhistory/', views.userhistory ),
+    path('view/', views.view ),
 ]

@@ -16,3 +16,5 @@ def addmovie(request):
     return render(request,"addmovie.html")
 def userhistory(request):
     return render(request,"userhistory.html")
+def view(request):
+    return render(request,"view.html")
