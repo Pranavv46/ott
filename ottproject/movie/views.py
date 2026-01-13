@@ -20,3 +20,4 @@ def view(request):
     return render(request,"view.html")
 def reports(request):
     return render(request,"reports.html")
+ 
