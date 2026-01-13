@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Reports </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <style>
+        body {
+            background: #0f172a;
+        }
+        .card {
+            border-radius: 8px;
+        }
+        h4 {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand font-weight-bold" href="#"> Admin</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a class="nav-link" href="#">Movies</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Users</a></li>
+            <li class="nav-item active"><a class="nav-link" href="#">Reports</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Change Password</a></li>
+        </ul>
+        <a class="nav-link text-danger" href="#">Logout</a>
+    </div>
+</nav>
+
+
+<div class="container mt-5">
+
+    <div class="card shadow p-4">
+        <h4 class="text-center mb-4">📊 Movie Watch Reports</h4>
+
+        
+        <form method="get" class="d-flex justify-content-center mb-4">
+            <input type="text" class="form-control mr-2" style="width:400px"
+                   placeholder="Search movies...">
+            <button class="btn btn-success">Search</button>
+        </form>
+
+        
+        <div class="table-responsive">
+            <table class="table table-hover table-striped text-center">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Rank</th>
+                        <th>Movie ID</th>
+                        <th>Movie Title</th>
+                        <th>Total Views</th>
+                        
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>MV101</td>
+                        <td>RRR</td>
+                        <td>52,430</td>
+                        
+                    </tr>
+
+                    <tr>
+                        <td>2</td>
+                        <td>MV102</td>
+                        <td>Inception</td>
+                        <td>41,210</td>
+                       
+                    </tr>
+
+                    <tr>
+                        <td>3</td>
+                        <td>MV103</td>
+                        <td>Interstellar</td>
+                        <td>29,875</td>
+                        
+                    </tr>
+
+                    <tr>
+                        <td>4</td>
+                        <td>MV104</td>
+                        <td>Frozen II</td>
+                        <td>18,400</td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

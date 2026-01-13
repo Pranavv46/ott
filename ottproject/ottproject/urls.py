@@ -28,4 +28,5 @@ urlpatterns = [
     path('addmovie/', views.addmovie ),
     path('userhistory/', views.userhistory ),
     path('view/', views.view ),
+    path('reports/', views.reports ),
 ]

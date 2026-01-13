@@ -18,3 +18,5 @@ def userhistory(request):
     return render(request,"userhistory.html")
 def view(request):
     return render(request,"view.html")
+def reports(request):
+    return render(request,"reports.html")
