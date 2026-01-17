@@ -17,6 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from movie import views
+from movie.views import MovieListCreateView
+
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,4 +34,12 @@ urlpatterns = [
     path('userhistory/', views.userhistory ),
     path('view/', views.view ),
     path('reports/', views.reports ),
+
+
+     path('signup/',views.Signup,name='signup_api'),
+     path('login/', views.login, name='login_api'),
+
+     path('api/movies/', MovieListCreateView.as_view(), name='movie-list-create'),
+
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
