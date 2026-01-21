@@ -18,6 +18,14 @@ from rest_framework.response import Response
 from rest_framework import status
 
 
+from .models import WatchHistory
+from .serializers import WatchHistorySerializer
+from rest_framework.permissions import IsAuthenticated
+
+from .models import Watchlist
+from .serializers import WatchlistSerializer
+
+
 # Create your views here.
 
 def adminlogin(request):
@@ -28,7 +36,7 @@ def home(request):
     return render(request,"home.html")
 def editmovie(request):
     return render(request,"editmovie.html")
-def edituser(request):\
+def edituser(request):
     return render(request,"edituser.html")
 def addmovie(request):
     return render(request,"addmovie.html")
@@ -91,4 +99,51 @@ def movies(request):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def MovieDetail(request, pk):
+     try:
+         movie = Movie.objects.get(pk=pk)
+     except Movie.DoesNotExist:
+         return Response(status=status.HTTP_404_NOT_FOUND)
+
+     if request.method == 'GET':
+         serializer = MovieSerializer(movie)
+         return Response(serializer.data)
+
+@csrf_exempt
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def add_watch_history(request):
+
+    serializer = WatchHistorySerializer(
+        data=request.data
+    )
+
+    if serializer.is_valid():
+        serializer.save(user=request.user)  # 👈 VERY IMPORTANT
+        return Response({"message": "Watch history saved"}, status=201)
+
+    return Response(serializer.errors, status=400)
+
+
+
+
+@api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
+def watchlist(request):
+    # GET → list all movies in user's watchlist
+    if request.method == 'GET':
+        items = Watchlist.objects.filter(user=request.user)
+        serializer = WatchlistSerializer(items, many=True)
+        return Response(serializer.data)
+
+    # POST → add a movie to user's watchlist
+    if request.method == 'POST':
+        serializer = WatchlistSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(user=request.user)
+            return Response({"message": "Movie added to watchlist"}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

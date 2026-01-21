@@ -23,6 +23,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('adminlogin/', views.adminlogin ),
@@ -40,6 +41,13 @@ urlpatterns = [
      path('login/', views.login, name='login_api'),
 
      path('api/movies/', views.movies, name='movies_api'),
+
+     path('api/watch-history/', views.add_watch_history, name='watch-history'),
+
+     path('api/watchlist/', views.watchlist, name='watchlist'),
+     path('api/movies/<int:pk>/', views.MovieDetail, name='movie-detail'),
+
+
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

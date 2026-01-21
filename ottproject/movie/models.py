@@ -2,6 +2,7 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager 
 from django.db import models 
 from django.core.validators import FileExtensionValidator
+
 from django.conf import settings
 
 
@@ -53,9 +54,17 @@ class Movie(models.Model):
         return self.title
     
 class WatchHistory(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     watched_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"{self.user.email} watched {self.movie.title} on {self.watched_at}"
+
+class Watchlist(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    added_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user.email} added {self.movie.title} to watchlist on {self.added_at}"
