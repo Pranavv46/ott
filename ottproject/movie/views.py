@@ -134,16 +134,20 @@ def add_watch_history(request):
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
 def watchlist(request):
-    # GET → list all movies in user's watchlist
     if request.method == 'GET':
-        items = Watchlist.objects.filter(user=request.user)
-        serializer = WatchlistSerializer(items, many=True)
+        qs = Watchlist.objects.filter(user=request.user)
+        serializer = WatchlistSerializer(qs, many=True)
         return Response(serializer.data)
 
-    # POST → add a movie to user's watchlist
     if request.method == 'POST':
-        serializer = WatchlistSerializer(data=request.data)
+        serializer = WatchlistSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
-            serializer.save(user=request.user)
-            return Response({"message": "Movie added to watchlist"}, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            movie = serializer.validated_data['movie']
+
+            if Watchlist.objects.filter(user=request.user, movie=movie).exists():
+                return Response({"error": "Movie already in watchlist"}, status=400)
+
+            serializer.save()
+            return Response({"message": "Added"}, status=201)
+
+        return Response(serializer.errors, status=400)
