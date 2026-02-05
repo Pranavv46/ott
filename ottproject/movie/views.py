@@ -25,20 +25,42 @@ from rest_framework.permissions import IsAuthenticated
 from .models import Watchlist
 from .serializers import WatchlistSerializer
 
+from django.contrib.auth import login, logout
+from django.shortcuts import redirect
+
 
 # Create your views here.
 
 def adminlogin(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        password = request.POST['password']
+
+       
+        user = authenticate(request,   email=  email, password=password)
+
+        if user is not None and user.is_admin:
+            login(request, user)
+            return redirect('/home/')
     return render(request,"adminlogin.html")
+
 def forgotpassword(request):
+
     return render(request,"forgotpassword.html")
+
+
 def home(request):
-    return render(request,"home.html")
+  movies = Movie.objects.all()
+  
+  return render(request,"home.html",{'movies':movies})
+
+
 def editmovie(request):
     return render(request,"editmovie.html")
 def edituser(request):
     return render(request,"edituser.html")
 def addmovie(request):
+    
     return render(request,"addmovie.html")
 def userhistory(request):
     return render(request,"userhistory.html")
@@ -69,7 +91,7 @@ def Signup(request):
 @csrf_exempt
 @api_view(["POST"])
 @permission_classes((AllowAny,))
-def login(request):
+def userlogin(request):
     email = request.data.get("email")
     password = request.data.get("password")
     print(email,password)

@@ -41,13 +41,13 @@ class Movie(models.Model):
     description = models.TextField()
     release_date = models.DateField()
     poster = models.FileField(
-        upload_to='posters/',
+        upload_to='images/',
         validators=[FileExtensionValidator(allowed_extensions=['jpg', 'png'])],
         null=True,
         blank=True
     )
     video_file = models.FileField(
-        upload_to='videos/',
+        upload_to='video/',
         validators=[FileExtensionValidator(allowed_extensions=['mp4', 'avi', 'mkv'])],
         null=True,
         blank=True

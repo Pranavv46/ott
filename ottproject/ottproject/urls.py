@@ -26,19 +26,19 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('adminlogin/', views.adminlogin ),
+    path('adminlogin/', views.adminlogin ,name='adminlogin'),
     path('forgotpassword/', views.forgotpassword ),
     path('home/', views.home ),
     path('editmovie/', views.editmovie ),
     path('edituser/', views.edituser ),
-    path('addmovie/', views.addmovie ),
+    path('addmovie/', views.addmovie, name="addmovie" ),  
     path('userhistory/', views.userhistory ),
     path('view/', views.view ),
     path('reports/', views.reports ),
 
 
      path('signup/',views.Signup,name='signup_api'),
-     path('login/', views.login, name='login_api'),
+     path('login/', views.userlogin, name='login_api'),
 
      path('api/movies/', views.movies, name='movies_api'),
 
