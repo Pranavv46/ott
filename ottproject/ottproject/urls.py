@@ -29,12 +29,12 @@ urlpatterns = [
     path('adminlogin/', views.adminlogin ,name='adminlogin'),
     path('forgotpassword/', views.forgotpassword ),
     path('home/', views.home ),
-    path('editmovie/', views.editmovie ),
+    path('editmovie/', views.editmovie, name="editmovie" ),
     path('edituser/', views.edituser ),
     path('addmovie/', views.addmovie, name="addmovie" ),  
     path('userhistory/', views.userhistory ),
-    path('view/', views.view ),
-    path('reports/', views.reports ),
+    
+    path('reports/', views.reports, name='reports' ),
 
 
      path('signup/',views.Signup,name='signup_api'),
@@ -46,6 +46,9 @@ urlpatterns = [
 
      path('api/watchlist/', views.watchlist, name='watchlist'),
      path('api/movies/<int:pk>/', views.MovieDetail, name='movie-detail'),
+     
+     path('movie/<int:id>/', views.view, name='movie_page'),
+
 
 
 

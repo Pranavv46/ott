@@ -28,6 +28,7 @@ from .serializers import WatchlistSerializer
 from django.contrib.auth import login, logout
 from django.shortcuts import redirect
 
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 
@@ -173,3 +174,7 @@ def watchlist(request):
             return Response({"message": "Added"}, status=201)
 
         return Response(serializer.errors, status=400)
+
+def movie_page(request, id):
+    movie = get_object_or_404(Movie, id=id)
+    return render(request, "view.html", {"movie": movie})
