@@ -24,6 +24,7 @@ from django.conf.urls.static import static
 
 
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('adminlogin/', views.adminlogin ,name='adminlogin'),
@@ -45,9 +46,15 @@ urlpatterns = [
      path('api/watch-history/', views.add_watch_history, name='watch-history'),
 
      path('api/watchlist/', views.watchlist, name='watchlist'),
+
      path('api/movies/<int:pk>/', views.MovieDetail, name='movie-detail'),
      
-     path('movie/<int:id>/', views.view, name='movie_page'),
+    path('movie/<int:id>/', views.movie_page, name='movie_page'),
+     
+     path('trending/', views.trending_movies, name='trending'),
+
+    path('adminlogout/', views.admin_logout, name='adminlogout'),
+    path('api/logout/', views.logout_view, name='logout'),
 
 
 

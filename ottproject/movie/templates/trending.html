@@ -2,48 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>VoID-OTT Admin</title>
+    <title>Trending Movies | VoID-OTT</title>
 
-    <!-- Bootstrap CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
         body {
-            background-color: #0f0f0f;
+            background-color: #141414;
             color: white;
         }
 
         .navbar {
-            background-color: #000000;
+            background-color: #000;
         }
 
-        .nav-link {
-            color: #ccc !important;
+        .card {
+            background-color: #1c1c1c;
+            border: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .nav-link:hover,
-        .nav-link.active {
-            color: #fff !important;
-        }
-
-        .hero {
-            background: #111;
-            height: 45vh;
-            display: flex;
-            align-items: center;
-            padding: 40px;
-        }
-
-        .movie-card img {
-            width: 100%;
-            height: 450px;
-            object-fit: cover;
-            border-radius: 10px;
-        }
-
-        .movie-card:hover {
+        .card:hover {
             transform: scale(1.05);
-            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(255, 0, 0, 0.4);
+        }
+
+        .poster-container {
+            aspect-ratio: 2 / 3;
+            overflow: hidden;
+        }
+
+        .poster-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .section-title {
+            font-weight: bold;
+            color: #ff0000;
         }
     </style>
 </head>
@@ -62,15 +62,15 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
             <li class="nav-item">
-                <a class="nav-link active" href="/home/">Home</a>
+                <a class="nav-link" href="/home/">Home</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'trending' %}">Trending</a>
+                <a class="nav-link active" href="{% url 'trending' %}">Trending</a>
             </li>
 
             <li class="nav-item">
-                 <a class="nav-link" href="{% url 'addmovie' %}">Add Movie</a>
+                <a class="nav-link" href="{% url 'addmovie' %}">Add Movie</a>
             </li>
 
             <li class="nav-item">
@@ -86,53 +86,47 @@
             </li>
         </ul>
 
-        <a href="/adminlogout/" class="btn btn-outline-light btn-sm">Logout</a>
+        <a href="/logout/" class="btn btn-outline-light btn-sm">Logout</a>
     </div>
-    
 </nav>
 
-<!-- HERO SECTION -->
-<div class="hero">
-    <div>
-        <h1 class="fw-bold">Admin Dashboard</h1>
-        <p class="text-secondary">
-            Manage movies, users, and platform activity
-        </p>
-        <button class="btn btn-danger"onclick="window.location.href='{% url "addmovie" %}'">Add New Movie</button>
-    </div>
-</div>
-
-<!-- MOVIE SECTION -->
+<!-- CONTENT -->
 <div class="container mt-5">
-    <h4 class="mb-4">Trending Movies</h4>
 
-    <div class="row g-4">
+    <h2 class="section-title mb-4">🔥 Trending Movies</h2>
+
+    <div class="row">
+
         {% for movie in movies %}
-        <div class="col-md-3 col-sm-6">
-            
-            <a href="/movie/{{ movie.id }}/"
-               class="text-decoration-none text-light">
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
 
-                <div class="movie-card text-center">
+            <div class="card h-100 shadow">
 
+                <div class="poster-container">
                     {% if movie.poster %}
                         <img src="{{ movie.poster.url }}" alt="{{ movie.title }}">
                     {% else %}
-                        <img src="/media/images/doom.jpg" alt="Default Poster">
+                        <img src="https://via.placeholder.com/300x450?text=No+Image">
                     {% endif %}
-
-                    <p class="mt-2 fw-semibold">{{ movie.title }}</p>
-
                 </div>
 
-            </a>
+                <div class="card-body text-center">
+                    <h6 class="card-title">{{ movie.title }}</h6>
+                    <small class="text-muted">
+                        Released: {{ movie.release_date }}
+                    </small>
+                </div>
+
+            </div>
+
         </div>
         {% empty %}
-        <p class="text-secondary">No movies available.</p>
+            <p>No trending movies available.</p>
         {% endfor %}
-    </div>
-</div>
 
+    </div>
+
+</div>
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
